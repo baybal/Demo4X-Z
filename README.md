@@ -14,7 +14,7 @@ Notes
 
 - The page is robot parseable and has metadata aggregable by all major search engines except for Bing.
 
-- I used Nimbus Sans L font from URW as a substitute for Helvetica Neue. This font looks well in most browsers and devices, but it has few issues with letter spacing in MSIE and hinting in Google Chrome. Both of these issues can be fixed with some time by reworking the font.
+- I used Nimbus Sans L font from URW as a substitute for Helvetica Neue. This font looks well in most browsers and devices, but it has few issues with letter spacing in MSIE and hinting in Google Chrome. Both of these issues can be fixed by reworking the font.
 
 - All page decorations and icons are bitmap-free. I used RGBA colours for page elements that were given as semitransparent in PSD file as I believe that was the original idea of a designer. All items that were indicated as hoverable are working. I used no z-order or animated elements on the page to increase performance in mobile browsers. All gradient decorations are fallbackable for old browsers including MSIE6.
 
