@@ -16,4 +16,4 @@ Notes
 
 - All page decorations and icons are bitmap-free. I used RGBA colours for page elements that were given as semitransparent in PSD file as I believe that was the original idea of a designer. All items that were indicated as hoverable are working. I used no z-order or animated elements on the page to increase performance in mobile browsers.
 
-- Total size of the page is 1712 bytes with all assets. The page takes less than 400 milliseconds to load from a server in Seattle on my computer as measured by browser from start to pageLoad event.
+- The total page size is 1712 bytes with all assets. The page takes less than 400 milliseconds to load from a server in Seattle on my computer as measured by browser from start to pageLoad event.
