@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+________                                              __                 ____   ____________         _____
+\______ \   ____   _____ _____ _______   ____ _____ _/  |_  ___________  \   \ /   /\_____  \       /  |  |
+ |    |  \_/ __ \ /     \\__  \\_  __ \_/ ___\\__  \\   __\/  _ \_  __ \  \   Y   /   _(__  <      /   |  |_
+ |    `   \  ___/|  Y Y  \/ __ \|  | \/\  \___ / __ \|  | (  <_> )  | \/   \     /   /       \    /    ^   /
+/_______  /\___  >__|_|  (____  /__|    \___  >____  /__|  \____/|__|       \___/   /______  / /\ \____   |
+        \/     \/      \/     \/            \/     \/                                      \/  \/      |__|
+								MAKEFILE PROCESSOR for STATIC ASSETS
+-->
+<html lang="en-us" ng-app="demo">
+	<head>
+		<meta charset="UTF-8">
+		<!-- CSS -->
+		<!-- Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Merriweather:300italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet prefetch" href="css/main.css" type="text/css">
+		<!-- Scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-cookies.js"	type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+		<!-- page title, displayed in your browser bar -->
+		<title>Demo 1</title>
+		<!-- mobile setting -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- Metadata -->
+		<meta name="description" content="Super front end demo">
+		<meta name="keywords" content="front end demo many keywords">
+		<meta name="title" content="DEMO 1">
+		<meta property="og:title" content="DEMO 1">
+		<meta property="og:description" content="Paul Ni's SEO friendly theme">
+		<meta property="og:url" content="http://transformativepower.net/">
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="demo 1">
+		<meta name="google-site-verification" content="your google number goes here">
+		<!-- Metadata -->
+		<!--[if lt IE 9]>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<![endif]-->
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none;
+				}
+			</style>
+		<![endif]-->
+	</head>
+	<body>
+
+		<header class="marvelous page_width_m">
+			<h1 class="hmargin_1">Marvelous!</h1>
+			<p class="hmargin_1 w_2_3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+		</header>
+		<main class="page_width_m block" ng-controller="MainController as mainCtrl">
+			<h1 class="vgrad_1 hmargin_1 text_centre font_medium">ADD AN ITEM</h1>
+			<div class="column_container">
+				<div class="sidebar inline_block w_1_3 h_25">
+					<input ng-model="item.value" class="padding_1 wg_full block border_1 box_style_1 font_size_4_5" placeholder="ENTER ITEM"/>
+					<a ng-class="{'box_style_3': combobox_toggled}" class="wg_full block hmargin_1 box_style_1 box_style_2 font_size_4_5 dropdown" ng-click="combobox_toggled = !combobox_toggled">
+						<div class="border_1">{{column == data1 ? 'COLUMN 1'   : column == data2 ? 'COLUMN 2'   : 'CHOOSE COLUMN'}}
+							<svg ng-class="{'r_180': combobox_toggled}" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 6" version="1.2" y="0px" x="0px"><path d="m0 0h13l-6.5 6-6.5-6z"/></svg>
+						</div>
+						<ul ng-init="combobox_toggled = false" ng-show="combobox_toggled">
+							<li ng-click="column = data1">COLUMN 1</li>
+							<li ng-click="column = data2">COLUMN 2</li>
+						</ul>
+					</a>
+					<div class="bottom">
+						<button class="text_centre padding_1 wg_full block border_1 font_medium add_item" ng-click="column.push({value:item.value})">ADD ITEM</button>
+						<div class="wg_full block font_size_4_5 font_medium">SEARCH AN ITEM</div>
+						<input ng-model="search" class="padding_1 wg_full block border_1 box_style_1 font_size_4_5 search" placeholder="SEARCH"/>
+					</div>
+				</div><div class="inline_block w_2_3 column_container h_25 scolling"><!--avoiding use of nested ng-repeat because of unfixable memleaks and performance degradation--><ul class="inline_block w_1_2 list_style_1 border_2 h95">
+						<div class="top_bar vgrad_2 text_centre font_medium">COLUMN 1</div>
+						<li ng-repeat="item in data1 | filter:search:strict">
+							{{item.value}}
+							<a ng-click="deleteItemFromArray(data1, $index)" href=""  class="delete_button">
+								<svg viewBox="0 0 13.6 13.6" x="0" y="0" >
+									<path d="M 2.3 0 L 0 2.3 L 4.5 6.8 L 0 11.3 L 2.3 13.6 L 6.8 9.1 L 11.3 13.6 L 13.6 11.3 L 9.1 6.8 L 13.6 2.3 L 11.3 0 L 6.8 4.5 L 2.3 0 Z" />
+								</svg>
+							</a>
+						</li>
+					</ul><ul class="top_bar inline_block w_1_2 list_style_1 border_2 h95">
+						<div class="text_centre vgrad_2 font_medium">COLUMN 2</div>
+						<li ng-repeat="item in data2 | filter:search:strict">
+							{{item.value}}
+							<a ng-click="deleteItemFromArray(data2, $index)" href="" class="delete_button">
+								<svg viewBox="0 0 13.6 13.6" x="0" y="0" >
+									<path d="M 2.3 0 L 0 2.3 L 4.5 6.8 L 0 11.3 L 2.3 13.6 L 6.8 9.1 L 11.3 13.6 L 13.6 11.3 L 9.1 6.8 L 13.6 2.3 L 11.3 0 L 6.8 4.5 L 2.3 0 Z" />
+								</svg>
+							</a>
+						</li>
+					</ul></div>
+			</div>
+		</main>
+	</body>
+</html>
